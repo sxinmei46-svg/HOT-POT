@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>火锅宴会菜式选择</title>
+  <meta name="description" content="邀请朋友登录并选择火锅菜式，方便主人汇总采购清单。" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="brand">
+        <span class="logo">锅</span>
+        <span>火锅宴会菜式选择</span>
+      </div>
+      <button id="adminBtn" class="ghost-btn" type="button">主人汇总</button>
+    </nav>
+
+    <section class="hero-content">
+      <p class="eyebrow">Hotpot Party Picker</p>
+      <h1>先选菜，再开涮。</h1>
+      <p class="subtitle">每位来宾登录后选择想吃的菜式，主人可在汇总页查看人数、菜品票数与采购建议。</p>
+      <div class="hero-card">
+        <div>
+          <strong id="modeLabel">本地演示模式</strong>
+          <span id="modeHint">数据仅保存在当前浏览器。需要多人在线汇总时，请配置 Firebase。</span>
+        </div>
+        <a href="#choose" class="primary-link">开始选择</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="choose" class="panel login-panel">
+      <div>
+        <p class="section-kicker">Step 1</p>
+        <h2>来宾登录</h2>
+        <p class="muted">请输入你的姓名，方便主人统计谁会参加以及每个人选择了什么。</p>
+      </div>
+
+      <form id="guestForm" class="login-form">
+        <label>
+          姓名 <span>*</span>
+          <input id="guestName" required maxlength="30" placeholder="例如：小王" />
+        </label>
+        <label>
+          手机/备注
+          <input id="guestNote" maxlength="50" placeholder="可选，例如：不吃辣 / 带朋友一位" />
+        </label>
+        <label class="checkbox-row">
+          <input id="willAttend" type="checkbox" checked />
+          <span>我会参加这次火锅宴</span>
+        </label>
+        <button class="primary-btn" type="submit">进入菜式选择</button>
+      </form>
+    </section>
+
+    <section id="pickerPanel" class="panel hidden">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Step 2</p>
+          <h2>选择你想吃的菜式</h2>
+          <p id="welcomeText" class="muted"></p>
+        </div>
+        <div class="counter">
+          已选 <strong id="selectedCount">0</strong> 项
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="搜索菜品，例如：牛肉、虾滑、豆皮" />
+        <select id="categoryFilter" aria-label="按分类筛选">
+          <option value="all">全部分类</option>
+        </select>
+      </div>
+
+      <div id="dishGrid" class="dish-grid"></div>
+
+      <div class="actions">
+        <button id="saveBtn" class="primary-btn" type="button">提交我的选择</button>
+        <button id="resetBtn" class="ghost-btn" type="button">清空选择</button>
+      </div>
+      <p id="saveStatus" class="status"></p>
+    </section>
+
+    <section class="panel">
+      <p class="section-kicker">采购提示</p>
+      <h2>推荐准备逻辑</h2>
+      <div class="tips">
+        <article>
+          <strong>锅底</strong>
+          <p>建议准备鸳鸯锅：麻辣 + 番茄/菌汤，照顾不同口味。</p>
+        </article>
+        <article>
+          <strong>蘸料</strong>
+          <p>芝麻酱、蒜泥、香菜、葱花、小米辣、醋、生抽、蚝油可自由组合。</p>
+        </article>
+        <article>
+          <strong>采购量</strong>
+          <p>肉类约 250–350g/人，蔬菜豆制品约 250g/人，主食按 100g/人估算。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="adminDialog" class="admin-dialog">
+    <form method="dialog" class="dialog-header">
+      <div>
+        <p class="section-kicker">Host Dashboard</p>
+        <h2>主人汇总</h2>
+      </div>
+      <button class="icon-btn" value="close" aria-label="关闭">×</button>
+    </form>
+
+    <div id="adminLogin" class="admin-login">
+      <p class="muted">请输入主人密码。默认密码是 <code>hotpot2026</code>，可在 <code>config.js</code> 修改。</p>
+      <input id="adminPassword" type="password" placeholder="主人密码" />
+      <button id="unlockAdmin" class="primary-btn" type="button">查看汇总</button>
+      <p class="tiny">提示：前端密码只适合聚会内部使用，不适合作为严肃安全控制。</p>
+    </div>
+
+    <div id="adminContent" class="hidden">
+      <div class="summary-cards">
+        <div><span>参加人数</span><strong id="attendeeCount">0</strong></div>
+        <div><span>提交人数</span><strong id="submissionCount">0</strong></div>
+        <div><span>热门菜品</span><strong id="topDish">-</strong></div>
+      </div>
+
+      <h3>菜品票数</h3>
+      <div id="resultsTable" class="results-table"></div>
+
+      <h3>来宾明细</h3>
+      <div id="guestList" class="guest-list"></div>
+
+      <div class="actions">
+        <button id="exportCsv" class="primary-btn" type="button">导出 CSV</button>
+        <button id="clearAll" class="danger-btn" type="button">清空本地数据</button>
+      </div>
+    </div>
+  </dialog>
+
+  <footer>
+    <p>Made for a warm hotpot party · GitHub Pages ready</p>
+  </footer>
+
+  <script src="./config.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
