@@ -1,0 +1,26 @@
+<svg width="680" height="520" viewBox="0 0 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="520" rx="36" fill="#FAFBF7"/>
+  <path d="M86 366C139 296 224 266 335 276C447 286 531 254 600 176V520H86V366Z" fill="#EAF4EA"/>
+  <path d="M86 140C154 71 254 43 386 56C486 66 561 43 619 16V268C563 320 480 341 370 331C243 319 145 345 86 410V140Z" fill="#FFF3CF"/>
+  <ellipse cx="338" cy="318" rx="236" ry="76" fill="#262422" opacity=".12"/>
+  <ellipse cx="340" cy="278" rx="220" ry="112" fill="#292321"/>
+  <ellipse cx="340" cy="254" rx="230" ry="112" fill="#3A312E"/>
+  <ellipse cx="340" cy="246" rx="194" ry="83" fill="#F05B3A"/>
+  <path d="M163 245C191 187 247 154 337 154C439 154 504 193 534 247C505 202 438 176 340 176C247 176 191 201 163 245Z" fill="#FFCB62"/>
+  <path d="M202 251C248 216 300 203 356 211C409 219 451 210 493 188C462 236 411 262 354 254C302 246 251 252 202 251Z" fill="#BA2C24" opacity=".72"/>
+  <circle cx="264" cy="234" r="28" fill="#F7C84A"/>
+  <circle cx="402" cy="238" r="26" fill="#F7C84A"/>
+  <circle cx="334" cy="225" r="20" fill="#F9E9BB"/>
+  <path d="M240 210C228 180 220 154 217 130" stroke="#254638" stroke-width="16" stroke-linecap="round"/>
+  <path d="M274 196C278 164 284 137 294 116" stroke="#2F8B64" stroke-width="16" stroke-linecap="round"/>
+  <path d="M430 205C450 179 466 155 477 132" stroke="#2F8B64" stroke-width="16" stroke-linecap="round"/>
+  <path d="M398 198C396 168 389 142 378 119" stroke="#254638" stroke-width="16" stroke-linecap="round"/>
+  <path d="M180 266L118 228" stroke="#262422" stroke-width="14" stroke-linecap="round"/>
+  <path d="M500 266L562 228" stroke="#262422" stroke-width="14" stroke-linecap="round"/>
+  <rect x="207" y="355" width="265" height="28" rx="14" fill="#262422"/>
+  <rect x="144" y="382" width="391" height="40" rx="20" fill="#E24736"/>
+  <circle cx="163" cy="126" r="32" fill="#2F8B64"/>
+  <circle cx="579" cy="112" r="20" fill="#E24736"/>
+  <circle cx="568" cy="386" r="34" fill="#F7C84A"/>
+  <circle cx="110" cy="405" r="22" fill="#F05B3A"/>
+</svg>

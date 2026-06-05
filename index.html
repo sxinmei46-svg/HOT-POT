@@ -19,15 +19,24 @@
     </nav>
 
     <section class="hero-content">
-      <p class="eyebrow">Hotpot Party Picker</p>
-      <h1>先选菜，再开涮。</h1>
-      <p class="subtitle">每位来宾登录后选择想吃的菜式，主人可在汇总页查看人数、菜品票数与采购建议。</p>
-      <div class="hero-card">
-        <div>
-          <strong id="modeLabel">本地演示模式</strong>
-          <span id="modeHint">数据仅保存在当前浏览器。需要多人在线汇总时，请配置 Firebase。</span>
+      <div class="hero-copy">
+        <p class="eyebrow">Hotpot Party Picker</p>
+        <h1>先选菜，再开涮。</h1>
+        <p class="subtitle">把朋友的口味提前收齐，主人看一眼就知道锅底、肉菜、丸滑和饮料该怎么备。</p>
+        <div class="hero-card">
+          <div>
+            <strong id="modeLabel">本地演示模式</strong>
+            <span id="modeHint">数据仅保存在当前浏览器。需要多人在线汇总时，请配置 Firebase。</span>
+          </div>
+          <a href="#choose" class="primary-link">开始选择</a>
         </div>
-        <a href="#choose" class="primary-link">开始选择</a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="./assets/hotpot-hero.svg" alt="" />
+        <div class="hero-badges">
+          <span>40+ 菜品</span>
+          <span>6 类清单</span>
+        </div>
       </div>
     </section>
   </header>
@@ -89,9 +98,41 @@
       <p class="section-kicker">采购提示</p>
       <h2>推荐准备逻辑</h2>
       <div class="tips">
-        <article>
-          <strong>锅底</strong>
-          <p>建议准备鸳鸯锅：麻辣 + 番茄/菌汤，照顾不同口味。</p>
+        <article class="soup-guide">
+          <div class="tip-intro">
+            <strong>锅底</strong>
+            <p>建议准备鸳鸯锅：麻辣 + 番茄/菌汤，照顾不同口味。</p>
+          </div>
+          <div class="soup-base-grid" aria-label="锅底类型">
+            <figure class="soup-base-card">
+              <img src="./assets/soup-mala.svg" alt="麻辣红汤锅底" />
+              <figcaption>
+                <strong>麻辣红汤</strong>
+                <span>香辣主锅，适合肉卷、毛肚、鸭血。</span>
+              </figcaption>
+            </figure>
+            <figure class="soup-base-card">
+              <img src="./assets/soup-tomato.svg" alt="番茄锅底" />
+              <figcaption>
+                <strong>番茄锅底</strong>
+                <span>酸甜浓郁，适合肥牛、虾滑、蔬菜。</span>
+              </figcaption>
+            </figure>
+            <figure class="soup-base-card">
+              <img src="./assets/soup-mushroom.svg" alt="菌汤锅底" />
+              <figcaption>
+                <strong>菌汤锅底</strong>
+                <span>鲜香温和，适合豆制品和菌菇类。</span>
+              </figcaption>
+            </figure>
+            <figure class="soup-base-card">
+              <img src="./assets/soup-clear.svg" alt="清汤锅底" />
+              <figcaption>
+                <strong>清汤三鲜</strong>
+                <span>清爽不辣，照顾老人、小孩和淡口味。</span>
+              </figcaption>
+            </figure>
+          </div>
         </article>
         <article>
           <strong>蘸料</strong>
